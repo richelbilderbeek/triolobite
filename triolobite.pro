@@ -1,5 +1,6 @@
 SOURCES += \
-    main.cpp
+    main.cpp \
+    piece.cpp
 
 CONFIG += c++17
 QMAKE_CXXFLAGS += -std=c++17
@@ -18,3 +19,6 @@ CONFIG(release, debug|release) {
 
 # Qt5
 QT += core gui
+
+HEADERS += \
+    piece.h
