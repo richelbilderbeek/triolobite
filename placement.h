@@ -22,9 +22,14 @@ private:
   int m_y;
 };
 
+
+
 int get_angle(const placement& p) noexcept;
 int get_x(const placement& p) noexcept;
 int get_y(const placement& p) noexcept;
+
+/// Is the angle correct at the coordinat?
+bool has_correct_angle(const int x, const int y, const int angle);
 
 /// Determine if an angle is valid
 constexpr bool is_angle(const int angle) noexcept{

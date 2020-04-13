@@ -69,12 +69,10 @@ void test_grid()
     const grid g = create_test_grid();
     assert(is_taken(placement(), g));
   }
-  //Add a piece is noted
+  //Cannot add a piece at a taken position
   {
-    grid g;
-    const piece p;
-    const placement pl;
-    g.add_piece(p, pl);
-    assert(!g.can_add_piece(p, pl));
+    const grid g = create_test_grid();
+    assert(is_taken(placement(), g));
+    assert(!g.can_add_piece());
   }
 }
