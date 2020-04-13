@@ -1,0 +1,17 @@
+language: cpp
+dist: bionic
+compiler: gcc
+
+install: 
+  # Required on bionic
+  - sudo apt update -qq
+  # Boost
+  - sudo apt install -qq libboost-all-dev
+  # Qt5
+  - sudo apt install -qq qt5-qmake qt5-default
+
+script: 
+  - qmake
+  - make --silent debug
+  - ./triolobite
+
