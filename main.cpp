@@ -1,9 +1,11 @@
 #include "piece.h"
+#include "pieces.h"
 
 /// All tests are called from here, only in debug mode
 void test()
 {
   test_piece();
+  test_pieces();
 }
 
 int main(int, char **) //!OCLINT tests may be long

@@ -2,7 +2,7 @@
 #define PIECE_H
 
 
-///A Triominos piece
+///A piece
 /*
     *
    /a\
