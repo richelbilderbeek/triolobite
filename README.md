@@ -1,0 +1,2 @@
+# triolobite
+Triominos Lite version
