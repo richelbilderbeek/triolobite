@@ -3,7 +3,8 @@ SOURCES += \
     piece.cpp \
     pieces.cpp \
     game.cpp \
-    grid.cpp
+    grid.cpp \
+    placement.cpp
 
 CONFIG += c++17
 QMAKE_CXXFLAGS += -std=c++17
@@ -27,4 +28,5 @@ HEADERS += \
     piece.h \
     pieces.h \
     game.h \
-    grid.h
+    grid.h \
+    placement.h

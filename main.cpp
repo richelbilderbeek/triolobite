@@ -2,6 +2,7 @@
 #include "grid.h"
 #include "piece.h"
 #include "pieces.h"
+#include "placement.h"
 
 /// All tests are called from here, only in debug mode
 void test()
@@ -10,6 +11,7 @@ void test()
   test_grid();
   test_piece();
   test_pieces();
+  test_placement();
 }
 
 int main(int, char **) //!OCLINT tests may be long
