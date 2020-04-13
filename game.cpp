@@ -7,7 +7,7 @@ game::game()
     m_player_2{},
     m_undrawn{create_all_pieces()}
 {
-  assert(count_pieces(*this) == 6 * 6 * 6);
+  assert(count_pieces(*this) == get_total_n_pieces());
 }
 
 int count_pieces(const game& g)
@@ -45,6 +45,6 @@ void test_game()
   //A game has the correct number of pieces
   {
     const game g;
-    assert(count_pieces(g) == 6 * 6 * 6);
+    assert(count_pieces(g) == get_total_n_pieces());
   }
 }

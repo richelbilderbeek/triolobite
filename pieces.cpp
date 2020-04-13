@@ -11,12 +11,12 @@ pieces::pieces(std::vector<piece> ps)
 std::vector<piece> create_all_pieces()
 {
   std::vector<piece> pieces;
-  pieces.reserve(6 * 6 * 6);
+  pieces.reserve(get_total_n_pieces());
   for (int a = 0; a != 6; ++a)
   {
-    for (int b = 0; b != 6; ++b)
+    for (int b = a; b != 6; ++b)
     {
-      for (int c = 0; c != 6; ++c)
+      for (int c = b; c != 6; ++c)
       {
         pieces.push_back(piece(a, b, c));
       }
@@ -35,6 +35,6 @@ void test_pieces()
   //Correct number of pieces
   {
     const auto p = create_all_pieces();
-    assert(p.size() == 6 * 6 * 6);
+    assert(static_cast<int>(p.size()) == get_total_n_pieces());
   }
 }
