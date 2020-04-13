@@ -1,7 +1,9 @@
 SOURCES += \
     main.cpp \
     piece.cpp \
-    pieces.cpp
+    pieces.cpp \
+    game.cpp \
+    grid.cpp
 
 CONFIG += c++17
 QMAKE_CXXFLAGS += -std=c++17
@@ -23,4 +25,6 @@ QT += core gui
 
 HEADERS += \
     piece.h \
-    pieces.h
+    pieces.h \
+    game.h \
+    grid.h

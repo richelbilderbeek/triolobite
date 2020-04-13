@@ -4,11 +4,11 @@
 #include "piece.h"
 #include <vector>
 
-///All pieces
+///A collection of pieces
 class pieces
 {
 public:
-  pieces();
+  pieces(std::vector<piece> ps = {});
 
   int size() const noexcept;
 
@@ -17,8 +17,8 @@ private:
   std::vector<piece> m_pieces;
 };
 
-///Create the pieces
-std::vector<piece> create_pieces();
+///Create all pieces
+std::vector<piece> create_all_pieces();
 
 void test_pieces();
 

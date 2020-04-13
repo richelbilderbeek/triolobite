@@ -1,9 +1,13 @@
+#include "game.h"
+#include "grid.h"
 #include "piece.h"
 #include "pieces.h"
 
 /// All tests are called from here, only in debug mode
 void test()
 {
+  test_game();
+  test_grid();
   test_piece();
   test_pieces();
 }

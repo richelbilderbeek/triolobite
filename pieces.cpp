@@ -2,13 +2,13 @@
 
 #include <cassert>
 
-pieces::pieces()
-  : m_pieces{create_pieces()}
+pieces::pieces(std::vector<piece> ps)
+  : m_pieces{ps}
 {
 
 }
 
-std::vector<piece> create_pieces()
+std::vector<piece> create_all_pieces()
 {
   std::vector<piece> pieces;
   pieces.reserve(6 * 6 * 6);
@@ -34,7 +34,7 @@ void test_pieces()
 {
   //Correct number of pieces
   {
-    const pieces p;
+    const auto p = create_all_pieces();
     assert(p.size() == 6 * 6 * 6);
   }
 }
