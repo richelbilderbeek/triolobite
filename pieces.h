@@ -10,6 +10,11 @@ class pieces
 public:
   pieces(std::vector<piece> ps = {});
 
+  auto begin() noexcept { return std::begin(m_pieces); }
+  auto end() noexcept { return std::end(m_pieces); }
+  auto& back() { return m_pieces.back(); }
+  void pop_back() { m_pieces.pop_back(); }
+
   int size() const noexcept;
 
 private:

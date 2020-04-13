@@ -4,11 +4,16 @@
 #include "grid.h"
 #include "pieces.h"
 
+#include <random>
+
 /// Game logic
 class game
 {
 public:
-  game();
+  game(const int rng_seed = 0);
+
+  ///Draw a piece
+  piece draw();
 
   const grid& get_grid() const noexcept { return m_grid; }
   const pieces& get_player_1() const noexcept { return m_player_1; }
@@ -19,6 +24,9 @@ private:
   grid m_grid;
   pieces m_player_1;
   pieces m_player_2;
+
+  std::mt19937 m_rng_engine;
+
   pieces m_undrawn;
 };
 
