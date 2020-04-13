@@ -68,6 +68,9 @@ grid create_test_grid() noexcept;
 
 int count_pieces(const grid& g) noexcept;
 
+/// Is the placement adjacent of another piece?
+bool is_adjacent(const placement& pl, const grid& g);
+
 /// Is the location already taken?
 /// Returns true if there is already a piece at that location
 bool is_taken(const placement& pl, const grid& g);

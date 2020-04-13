@@ -36,6 +36,28 @@ grid create_test_grid() noexcept
   return g;
 }
 
+bool is_adjacent(const placement& pl, const grid& g)
+{
+  assert(!is_taken(pl, g));
+  const int x{get_x(pl)};
+  const int y{get_y(pl)};
+  //Default positioning: check right, below and left
+  if ((x + y) % 2 == 0) {
+    return
+         is_taken(x + 1, y + 0, g)
+      || is_taken(x + 0, y + 1, g)
+      || is_taken(x - 1, y + 0, g)
+    ;
+  } else {
+    //Upside-down positioning: check above, right and left
+    return
+         is_taken(x + 0, y - 1, g)
+      || is_taken(x + 1, y + 0, g)
+      || is_taken(x - 1, y + 0, g)
+    ;
+  }
+}
+
 bool is_taken(const placement& pl, const grid& g)
 {
   return is_taken(get_x(pl), get_y(pl), g);
@@ -74,5 +96,26 @@ void test_grid()
     const grid g = create_test_grid();
     assert(is_taken(placement(), g));
     assert(!g.can_add_piece());
+  }
+  //Detect which placements are adjacent from starting position
+  {
+    const grid g = create_test_grid();
+    //Up: not adjancent, as center triangle has tip at top
+    assert(!is_adjacent(placement( 0, -1, 60), g));
+    //Right, below, left: all adjacent
+    assert( is_adjacent(placement( 1,  0, 60), g));
+    assert( is_adjacent(placement( 0,  1, 60), g));
+    assert( is_adjacent(placement(-1,  0, 60), g));
+  }
+  //Detect which placements are adjacent from position above start
+  {
+    grid g;
+    g.add_piece(piece(), placement(0, -1, 60));
+    //Below: not adjancent, as this triangle has tip at bottom
+    assert(!is_adjacent(placement( 0, 0, 120), g));
+    //Above, right, left: all adjacent
+    assert( is_adjacent(placement( 0, -2, 120), g));
+    assert( is_adjacent(placement( 1, -1, 120), g));
+    assert( is_adjacent(placement(-1, -1, 120), g));
   }
 }

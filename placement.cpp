@@ -1,5 +1,7 @@
 #include "placement.h"
+
 #include <cassert>
+#include <cmath>
 
 placement::placement(
   const int x,
@@ -29,7 +31,10 @@ int get_y(const placement& p) noexcept
 bool has_correct_angle(const int x, const int y, const int angle)
 {
   assert(is_angle(angle));
-  return (x + y) % 2 == 0 && angle % 120 == 0;
+  if (std::abs(x + y) % 2 == 0)
+    return angle % 120 == 0;
+  else
+    return angle % 120 != 0;
 }
 
 void test_placement()
@@ -47,6 +52,33 @@ void test_placement()
     assert(!has_correct_angle(0, 0, 180));
     assert( has_correct_angle(0, 0, 240));
     assert(!has_correct_angle(0, 0, 300));
+  }
+  // Different angles (+1, +0) of starting positions at 0, 120, 240
+  {
+    assert(!has_correct_angle(1, 0,   0));
+    assert( has_correct_angle(1, 0,  60));
+    assert(!has_correct_angle(1, 0, 120));
+    assert( has_correct_angle(1, 0, 180));
+    assert(!has_correct_angle(1, 0, 240));
+    assert( has_correct_angle(1, 0, 300));
+  }
+  // Same angles (-10, -10) of starting positions at 0, 120, 240
+  {
+    assert( has_correct_angle(-10, -10,   0));
+    assert(!has_correct_angle(-10, -10,  60));
+    assert( has_correct_angle(-10, -10, 120));
+    assert(!has_correct_angle(-10, -10, 180));
+    assert( has_correct_angle(-10, -10, 240));
+    assert(!has_correct_angle(-10, -10, 300));
+  }
+  // Different angles (-11, -10) of starting positions at 0, 120, 240
+  {
+    assert(!has_correct_angle(-11, -10,   0));
+    assert( has_correct_angle(-11, -10,  60));
+    assert(!has_correct_angle(-11, -10, 120));
+    assert( has_correct_angle(-11, -10, 180));
+    assert(!has_correct_angle(-11, -10, 240));
+    assert( has_correct_angle(-11, -10, 300));
   }
   // Setters and getters must be symmetrical
   {
