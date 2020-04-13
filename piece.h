@@ -15,9 +15,10 @@ public:
   ///Create a piece from its three values.
   /*
       *
-     /a\
-    /c b\
+    C/1\A
+    /3 2\
    *-----*
+      B
   */
   /// @param top top value
   /// @param bottom_right bottom-right value
@@ -41,6 +42,15 @@ public:
   int m_bottom_left;
 
 };
+
+/// Get the ID of the edge between top and bottom-right value
+int get_a(const piece& p) noexcept;
+
+/// Get the ID of the edge between bottom-right and bottom-left value
+int get_b(const piece& p) noexcept;
+
+/// Get the ID of the edge between bottom-left and top value
+int get_c(const piece& p) noexcept;
 
 ///Can these two pieces be connected in any way
 bool can_connect(const piece& p, const piece& q) noexcept;
