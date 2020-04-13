@@ -40,9 +40,15 @@ public:
 
   /// Place a piece
   void add_piece(
-    piece& p,
-    const placement& pl
+    const piece& p = piece(),
+    const placement& pl = placement()
   );
+
+  /// Can a piece be placed at that location?
+  bool can_add_piece(
+    const piece& p = piece(),
+    const placement& pl = placement()
+  ) const;
 
   /// Get all pieces
   const auto& get_pieces() const noexcept { return m_pieces; }
@@ -53,6 +59,11 @@ private:
 };
 
 int count_pieces(const grid& g) noexcept;
+
+/// Is the location already taken?
+/// Returns true if there is already a piece at that location
+bool is_taken(const placement& pl, const grid& g);
+bool is_taken(const int x, const int y, const grid& g);
 
 void test_grid();
 

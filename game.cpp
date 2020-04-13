@@ -11,7 +11,19 @@ game::game(const int rng_seed)
     m_undrawn{create_all_pieces()}
 {
   assert(count_pieces(*this) == get_total_n_pieces());
+
+  // First shuffle
   std::shuffle(std::begin(m_undrawn), std::end(m_undrawn), m_rng_engine);
+
+  // Place first piece in the center of the grid
+  m_grid.add_piece(draw(), placement());
+
+  // Players fill their hands
+  for (int i = 0; i != get_initial_n_pieces(); ++i)
+  {
+    m_player_1.push_back(draw());
+    m_player_2.push_back(draw());
+  }
 }
 
 int count_pieces(const game& g)
@@ -58,6 +70,9 @@ void test_game()
   {
     const game g;
     assert(count_pieces(g) == get_total_n_pieces());
+    assert(count_pieces_player_1(g) == get_initial_n_pieces());
+    assert(count_pieces_player_2(g) == get_initial_n_pieces());
+    assert(count_pieces_in_grid(g) == 1);
   }
   //Drawing a pieces reduces the number of undrawn
   {

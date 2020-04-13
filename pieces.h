@@ -14,6 +14,7 @@ public:
   auto end() noexcept { return std::end(m_pieces); }
   auto& back() { return m_pieces.back(); }
   void pop_back() { m_pieces.pop_back(); }
+  void push_back(const piece& p) { m_pieces.push_back(p); }
 
   int size() const noexcept;
 
