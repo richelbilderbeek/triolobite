@@ -29,6 +29,13 @@ int count_pieces(const grid& g) noexcept
   return static_cast<int>(g.get_pieces().size());
 }
 
+grid create_test_grid() noexcept
+{
+  grid g;
+  g.add_piece();
+  return g;
+}
+
 bool is_taken(const placement& pl, const grid& g)
 {
   return is_taken(get_x(pl), get_y(pl), g);
@@ -57,14 +64,17 @@ void test_grid()
     g.add_piece(); //Default piece, default placement
     assert(count_pieces(g) == 1);
   }
+  //Detect center position is taken
+  {
+    const grid g = create_test_grid();
+    assert(is_taken(placement(), g));
+  }
   //Add a piece is noted
   {
     grid g;
     const piece p;
     const placement pl;
-    assert(g.can_add_piece(p, pl));
     g.add_piece(p, pl);
     assert(!g.can_add_piece(p, pl));
   }
-
 }

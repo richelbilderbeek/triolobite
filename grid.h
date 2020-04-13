@@ -58,6 +58,10 @@ private:
   std::vector<std::pair<piece, placement>> m_pieces;
 };
 
+/// Create a grid with a 000
+/// at the center (that is, coordinat(0,0)) at angle 0
+grid create_test_grid() noexcept;
+
 int count_pieces(const grid& g) noexcept;
 
 /// Is the location already taken?
